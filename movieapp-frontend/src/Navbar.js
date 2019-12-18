@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import{ Link } from 'react-router-dom';
 
 class Navbar extends Component{
     render(){
@@ -9,8 +9,8 @@ class Navbar extends Component{
                         className='nav-input'
                         placeholder='Search'
                     />
-                    <h2 className='nav-title'>The Movie App</h2>
-                    <button className='nav-button'>Create Review</button>
+                    <Link to='/' className='nav-title'>The Movie App</Link>
+                    <Link to='/create' className='nav-button'>Create Review</Link>
             </div>
         );
     }
