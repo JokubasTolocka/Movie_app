@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Review from './Review';
 
 class Catalogue extends Component {
     constructor(props){
@@ -23,10 +24,20 @@ class Catalogue extends Component {
     }
 
     render(){
+    const {reviews} = this.state;
+    const ReviewList = reviews.map((review, i) => {
         return(
-            <div>
-                <h1>Hi</h1>
-                
+            <Review
+                key={i}
+                title={reviews[i].title}
+                user={reviews[i].user}
+                image={reviews[i].image}
+            />
+        );
+    }) 
+        return(
+            <div className='review-list'>
+                {ReviewList}
             </div>
         );
     }
