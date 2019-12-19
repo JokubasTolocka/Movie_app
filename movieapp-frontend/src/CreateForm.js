@@ -5,18 +5,29 @@ class CreateForm extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
-            title: '',
             user: '',
-            imageUrl: '',
-            review: ''
+            title: '',
+            image: '',
+            text: ''
         }
     };
 
     handleSubmit = (e) => {
         e.preventDefault();
         console.log("got to the beginning")
-        
-
+        fetch("http://localhost:8000/review/", {
+            method: 'post',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify(this.state)
+        }).then(() => {
+            this.props.history.push('/');
+            this.setState({user: '', title: '', image: '', text: ''});
+        }).catch(err => {
+            console.log(err);
+        })
+        // this.props.history.push('/');
     }
 
     handleChange = (e) => {
@@ -26,6 +37,8 @@ class CreateForm extends Component {
     };
 
     render(){
+        const date = new Date();
+        var today = date.toDateString();
         return(
             <div className='create-container'>
                 <div className='create-review'>
@@ -51,15 +64,17 @@ class CreateForm extends Component {
                         <input
                             className='create-input'
                             placeholder='URL for the Image of that Movie'
-                            name='imageUrl'
+                            name='image'
                             onChange={this.handleChange}
                             type='text'
                         />
                         <label htmlFor='review'/>
                         <input 
-                            className='create-review-text'
+                            className='create-input'
                             placeholder='Your Review'
-                            name='review'
+                            name='text'
+                            rows='2'
+                            cols='25'
                             onChange={this.handleChange}
                             type='text'
                         />
@@ -69,9 +84,21 @@ class CreateForm extends Component {
                         >Submit!</button>
                     </form>
                 </div>
+                <div className='preview'>
                     <h2 >Preview</h2>
-                <div className='create-preview'>
-
+                    <div className='preview-back-shadow'>
+                        <div className='create-preview' >
+                            <div className='preview-top'>
+                                <img className='preview-image' src={this.state.image} alt={this.state.title}/>
+                                <h1 className='preview-title'>{this.state.title}</h1>
+                                <h3 className='preview-user'>Review by: {this.state.user}</h3>
+                            </div> 
+                            <div className='preview-content'>
+                                <p className='preview-text'>{this.state.text}</p>
+                                <h5 className='preview-date'>{today}</h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
