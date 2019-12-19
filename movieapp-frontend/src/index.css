@@ -16,6 +16,7 @@ body{
 }
 .nav-input{
   height: 30px;
+  width: 166px;
   border: none;
   background-color: white;
   border-radius: 8px;
@@ -32,6 +33,7 @@ body{
   padding: 15px 0;
 }
 .nav-button{
+  width: 100px;
   height: 30px;
   background-color: #dbc57b;
   border: none;
@@ -102,4 +104,24 @@ body{
   text-align: center;
   margin: 0;
   font-size: 12px;
+}
+
+/* create review */
+
+.create-container{
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 50%;
+}
+.create-review{
+  width: 500px;
+}
+.create-preview{
+  width: 500px;
+}
+
+.create-form{
+  display: flex;
+  flex-direction: column;
 }
