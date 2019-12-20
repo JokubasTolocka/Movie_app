@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from "react-redux";
+import { postNewReview } from "./store/actions/reviews";
 
 class CreateForm extends Component {
     constructor(props){
@@ -14,20 +16,22 @@ class CreateForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("got to the beginning")
-        fetch("http://localhost:8000/review/", {
-            method: 'post',
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            }),
-            body: JSON.stringify(this.state)
-        }).then(() => {
-            this.props.history.push('/');
-            this.setState({user: '', title: '', image: '', text: ''});
-        }).catch(err => {
-            console.log(err);
-        })
-        // this.props.history.push('/');
+        
+        this.props.postNewReview(this.state);
+        this.setState({user: '', title: '', image: '', text: ''});
+        this.props.history.push('/');
+        // fetch("http://localhost:8000/review/", {
+        //     method: 'post',
+        //     headers: new Headers({
+        //         'Content-Type': 'application/json'
+        //     }),
+        //     body: JSON.stringify(this.state)
+        // }).then(() => {
+        //     this.props.history.push('/');
+        //     this.setState({user: '', title: '', image: '', text: ''});
+        // }).catch(err => {
+        //     console.log(err);
+        // })
     }
 
     handleChange = (e) => {
@@ -42,6 +46,11 @@ class CreateForm extends Component {
         return(
             <div className='create-container'>
                 <div className='create-review'>
+                    {this.props.errors.message && (
+                        <div>
+                            <h5>{this.props.errors.message}</h5>
+                        </div>
+                    )}
                     <h2>Your Review:</h2>
                     <form onSubmit={this.handleSubmit} className='create-form'>
                         <label htmlFor='movie'/>
@@ -105,4 +114,10 @@ class CreateForm extends Component {
     }
 }
 
-export default CreateForm;
+function mapStateToProps(state) {
+    return {
+      errors: state.errors
+    };
+  }
+
+export default  connect(mapStateToProps, { postNewReview })(CreateForm);

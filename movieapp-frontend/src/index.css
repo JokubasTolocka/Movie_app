@@ -113,7 +113,6 @@ body{
 .create-container{
   color: white;
   display: flex;
-  
   flex-wrap: wrap;
   flex-basis: 50%;
 }
