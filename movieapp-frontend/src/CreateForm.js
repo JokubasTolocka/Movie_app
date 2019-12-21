@@ -16,22 +16,14 @@ class CreateForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        
-        this.props.postNewReview(this.state);
-        this.setState({user: '', title: '', image: '', text: ''});
-        this.props.history.push('/');
-        // fetch("http://localhost:8000/review/", {
-        //     method: 'post',
-        //     headers: new Headers({
-        //         'Content-Type': 'application/json'
-        //     }),
-        //     body: JSON.stringify(this.state)
-        // }).then(() => {
-        //     this.props.history.push('/');
-        //     this.setState({user: '', title: '', image: '', text: ''});
-        // }).catch(err => {
-        //     console.log(err);
-        // })
+        this.props.postNewReview(this.state)
+            .then(() => {
+                this.setState({user: '', title: '', image: '', text: ''});
+                this.props.history.push('/');
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     handleChange = (e) => {

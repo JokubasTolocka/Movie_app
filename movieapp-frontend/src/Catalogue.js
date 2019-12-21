@@ -1,37 +1,40 @@
 import React, {Component} from 'react';
 import Review from './Review';
+import { connect } from "react-redux";
+import {fetchReviews} from './store/actions/reviews';
 
 class Catalogue extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            reviews: []
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //         reviews: []
             
-        }
+    //     }
+    // }
+    componentDidMount(){
+        this.props.fetchReviews();
+        console.log(this.props.reviews);//return empty array
     }
-    componentWillMount(){
-        this.getReviews();
-    }
-    getReviews(){
-        fetch('http://localhost:8000')
-            .then(res => {
-                return res.json();
-            })
-            .then(posts => {
-                this.setState({reviews: posts})
-            })
-            .catch(err => console.log(err))
-    }
+    // getReviews(){
+    //     fetch('http://localhost:8000')
+    //         .then(res => {
+    //             return res.json();
+    //         })
+    //         .then(posts => {
+    //             this.setState({reviews: posts})
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
     render(){
-    const {reviews} = this.state;
-    const ReviewList = reviews.map((review, i) => {
-        return(
+    const {reviews} = this.props;
+    const ReviewList = reviews.map(review => {
+    return (
             <Review
-                key={i}
-                title={reviews[i].title}
-                user={reviews[i].user}
-                image={reviews[i].image}
+                key={review._id}
+                title={review.title}
+                user={review.user}
+                image={review.image}
             />
         );
     }) 
@@ -43,4 +46,10 @@ class Catalogue extends Component {
     }
 }
 
-export default Catalogue;
+function mapStateToProps(state){
+    return {
+        reviews: state.reviews
+    };
+};
+
+export default connect(mapStateToProps, {fetchReviews})(Catalogue);

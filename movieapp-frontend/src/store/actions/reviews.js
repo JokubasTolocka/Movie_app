@@ -10,7 +10,10 @@ export const loadReviews = reviews => ({
 export const fetchReviews = () => {
     return dispatch => {
         return apiCall('get', 'http://localhost:8000')
-            .then((res) => dispatch(loadReviews(res)))
+            .then((res) => {
+                console.log(res); //gives those reviews
+                dispatch(loadReviews(res))
+            })
             .catch(err => dispatch(addError(err.message)));
     };
 };
