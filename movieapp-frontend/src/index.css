@@ -57,8 +57,8 @@ body{
 
 .review-list{
   display: flex;
-  flex-basis: 25%;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 /* Review */
@@ -115,6 +115,7 @@ body{
   display: flex;
   flex-wrap: wrap;
   flex-basis: 50%;
+  margin: auto auto;
 }
 .create-review{
   width: 500px;

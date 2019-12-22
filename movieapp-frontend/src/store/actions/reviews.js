@@ -11,7 +11,6 @@ export const fetchReviews = () => {
     return dispatch => {
         return apiCall('get', 'http://localhost:8000')
             .then((res) => {
-                console.log(res); //gives those reviews
                 dispatch(loadReviews(res))
             })
             .catch(err => dispatch(addError(err.message)));
