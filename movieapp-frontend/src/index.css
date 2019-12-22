@@ -224,3 +224,54 @@ body{
   margin: 0px 15%;
   color: #949494;
 }
+
+/* Review Page */
+
+.review-page{
+  display: flex;
+  color: white;
+  flex-direction: column;
+}
+
+.reviewPage-top{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reviewPage-image{
+  border-radius: 300px;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.reviewPage-title{
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 45px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+}
+.reviewPage-user{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 14px;
+  color: #949494;
+  text-align: center;
+}
+.reviewPage-text{
+  width: 400px;
+  margin-top: 0px;
+  font-size: 16px;
+  margin: 40px auto; 
+}
+.reviewPage-date{
+  width: 360px;
+  padding-right: 15px;
+  text-align: right;
+  font-size: 14px;
+  margin: 0px auto;
+  color: #949494;
+}

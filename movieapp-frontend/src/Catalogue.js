@@ -4,27 +4,9 @@ import { connect } from "react-redux";
 import {fetchReviews} from './store/actions/reviews';
 
 class Catalogue extends Component {
-    // constructor(props){
-    //     super(props);
-    //     this.state = {
-    //         reviews: []
-            
-    //     }
-    // }
     componentDidMount(){
         this.props.fetchReviews();
-        console.log(this.props.reviews);//return empty array
     }
-    // getReviews(){
-    //     fetch('http://localhost:8000')
-    //         .then(res => {
-    //             return res.json();
-    //         })
-    //         .then(posts => {
-    //             this.setState({reviews: posts})
-    //         })
-    //         .catch(err => console.log(err))
-    // }
 
     render(){
     const {reviews} = this.props;
@@ -32,9 +14,12 @@ class Catalogue extends Component {
     return (
             <Review
                 key={review._id}
+                id={review._id}
                 title={review.title}
                 user={review.user}
                 image={review.image}
+                date={review.createdAt}
+                text={review.text}
             />
         );
     }) 

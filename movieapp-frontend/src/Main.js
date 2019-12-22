@@ -1,5 +1,6 @@
 import React from 'react';
 import CreateForm from './CreateForm';
+import ReviewPage from './ReviewPage';
 import Catalogue from './Catalogue';
 import {Switch, Route, withRouter} from 'react-router-dom';
 import { connect } from "react-redux";
@@ -16,6 +17,7 @@ const Main = props => {
             errors={errors}
             removeError={removeError}
             {...props}/>}/>
+          <Route path='/review/:id' render={props => <ReviewPage {...props}/>}/>
         </Switch>
       </div>
     );
