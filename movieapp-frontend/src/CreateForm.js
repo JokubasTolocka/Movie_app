@@ -17,13 +17,8 @@ class CreateForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.postNewReview(this.state)
-            .then(() => {
-                this.setState({user: '', title: '', image: '', text: ''});
-                this.props.history.push('/');
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+        this.setState({user: '', title: '', image: '', text: ''});
+        this.props.history.push('/');
     }
 
     handleChange = (e) => {

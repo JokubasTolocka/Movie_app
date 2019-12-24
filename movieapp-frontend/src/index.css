@@ -17,7 +17,8 @@ body{
 }
 .nav-input{
   height: 30px;
-  width: 166px;
+  width: 150px;
+  margin-left: 25px;
   border: none;
   background-color: white;
   border-radius: 8px;
@@ -59,6 +60,20 @@ body{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.loading{
+  margin: 250px auto;
+  color: white;
+  text-align: center;
+}
+
+.review-list-offline{
+  font-size: 3em;
+}
+
+.review-list-offline-h3{
+  color: rgb(94, 94, 94);
 }
 
 /* Review */
@@ -144,9 +159,6 @@ body{
 .create-input:focus{
   box-shadow: 0 0 0 3pt #f2d6aeb7;
   outline: none;
-  /* outline-color: #f2d6ae83;
-  outline-width: 5px;
-  outline-style: solid; */
 }
 
 .create-button{

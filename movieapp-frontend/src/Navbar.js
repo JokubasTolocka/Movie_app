@@ -5,11 +5,7 @@ class Navbar extends Component{
     render(){
         return(
             <div className='nav-navbar'>
-                    <input
-                        className='nav-input'
-                        placeholder='Search'
-                    />
-                    <Link to='/' className='nav-title'>The Movie App</Link>
+                    <Link to='/' className='nav-title'><i className='fas fa-film '></i> The Movie App</Link>
                     <Link to='/create' className='nav-button'>Create Review</Link>
             </div>
         );

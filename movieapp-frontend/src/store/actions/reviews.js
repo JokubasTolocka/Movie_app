@@ -20,5 +20,6 @@ export const fetchReviews = () => {
 export const postNewReview = review => (dispatch, getState) => {
     return apiCall("post", `http://localhost:8000/review`, review)
       .then(res => {})
-      .catch(err => addError(err.message));
+      .catch(err => {
+        addError(err.message)});
   };

@@ -4,13 +4,29 @@ import { connect } from "react-redux";
 import {fetchReviews} from './store/actions/reviews';
 
 class Catalogue extends Component {
+    constructor(props){
+        super(props);
+        this.onSearchChange = this.onSearchChange.bind(this);
+        this.state = {
+            searchInput: ''
+        }
+    }
+    onSearchChange(e){
+        console.log(e.target.value);
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
     componentDidMount(){
         this.props.fetchReviews();
     }
-
     render(){
     const {reviews} = this.props;
-    const ReviewList = reviews.map(review => {
+    const filteredReviews = reviews.filter(review => {
+        return review.title.toLowerCase().includes(this.state.searchInput.toLowerCase());
+    });
+    const ReviewList = filteredReviews.map(review => {
     return (
             <Review
                 key={review._id}
@@ -22,13 +38,33 @@ class Catalogue extends Component {
                 text={review.text}
             />
         );
-    }) 
+    });
+    if(!reviews) {
+        return (
+            <div className='loading'>
+                <h1 className='review-list-offline'>Loading Reviews...</h1>
+                <h3 className='review-list-offline-h3'>It is also possible that you are disconnected from the internet.</h3>
+            </div>
+        );
+    } else {
         return(
-            <div className='review-list'>
-                {ReviewList}
+            <div>                  
+                <div>
+                    <input
+                        onChange={this.onSearchChange}
+                        className='nav-input'
+                        placeholder='Search'
+                        name='searchInput'
+                    />
+                </div>
+                <hr></hr>
+                <div className='review-list'>
+                    {ReviewList}
+                </div>
             </div>
         );
     }
+}
 }
 
 function mapStateToProps(state){
