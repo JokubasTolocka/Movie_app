@@ -1,10 +1,10 @@
 import React from 'react';
-import CreateForm from './CreateForm';
-import ReviewPage from './ReviewPage';
+import CreateForm from '../CreateForm';
+import ReviewPage from '../components/ReviewPage';
 import Catalogue from './Catalogue';
 import {Switch, Route, withRouter} from 'react-router-dom';
 import { connect } from "react-redux";
-import { removeError } from "./store/actions/errors";
+import { removeError } from "../store/actions/errors";
 
 
 const Main = props => {

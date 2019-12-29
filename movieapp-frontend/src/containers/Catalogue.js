@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Review from './Review';
+import Review from '../components/Review';
 import { connect } from "react-redux";
-import {fetchReviews} from './store/actions/reviews';
+import {fetchReviews} from '../store/actions/reviews';
 
 class Catalogue extends Component {
     constructor(props){

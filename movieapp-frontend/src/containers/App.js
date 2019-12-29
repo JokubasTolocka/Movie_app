@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Navbar from './Navbar';
 import {Provider} from 'react-redux';
-import {configureStore} from './store';
+import {configureStore} from '../store';
 import {BrowserRouter as Router} from 'react-router-dom';
 import Main from './Main';
 
