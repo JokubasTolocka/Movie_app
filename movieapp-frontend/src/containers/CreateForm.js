@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
-import { postNewReview } from "./store/actions/reviews";
+import { postNewReview } from "../store/actions/reviews";
 
 class CreateForm extends Component {
     constructor(props){
