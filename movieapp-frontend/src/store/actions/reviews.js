@@ -13,7 +13,7 @@ export const fetchReviews = () => {
             .then((res) => {
                 dispatch(loadReviews(res))
             })
-            .catch(err => dispatch(addError(err.message)));
+            .catch(err => dispatch(addError(err)));
     };
 };
 

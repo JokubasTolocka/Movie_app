@@ -22,7 +22,7 @@ class Catalogue extends Component {
         this.props.fetchReviews();
     }
     render(){
-    const {reviews} = this.props;
+    const {reviews, currentUser} = this.props;
     const filteredReviews = reviews.filter(review => {
         return review.title.toLowerCase().includes(this.state.searchInput.toLowerCase());
     });
@@ -39,15 +39,22 @@ class Catalogue extends Component {
             />
         );
     });
-    if(!reviews) {
-        return (
-            <div className='loading'>
-                <h1 className='review-list-offline'>Loading Reviews...</h1>
-                <h3 className='review-list-offline-h3'>It is also possible that you are disconnected from the internet.</h3>
-            </div>
-        );
-    } else {
+    if(!currentUser.isAuthenticated){
         return(
+            <div>
+                <h1>Hi this is the homepage</h1>
+            </div>
+        )
+    }
+    // if(!reviews) {
+    //     return (
+    //         <div className='loading'>
+    //             <h1 className='review-list-offline'>Loading Reviews...</h1>
+    //             <h3 className='review-list-offline-h3'>It is also possible that you are disconnected from the internet.</h3>
+    //         </div>
+    //     );
+    // } else {
+    return(
             <div>                  
                 <div>
                     <input
@@ -65,7 +72,7 @@ class Catalogue extends Component {
         );
     }
 }
-}
+
 
 function mapStateToProps(state){
     return {

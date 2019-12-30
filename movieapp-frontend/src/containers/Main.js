@@ -10,11 +10,14 @@ import { removeError } from "../store/actions/errors";
 
 
 const Main = props => {
-  const {errors, removeError, authUser} = props;
+  const {errors, removeError, authUser, currentUser} = props;
     return (
       <div className="container">
         <Switch>
-          <Route exact path='/' render={props => <Catalogue {...props}/>}/>
+          <Route exact path='/' render={props => <Catalogue 
+          currentUser={currentUser}
+          {...props}/>}
+          />
           <Route exact path='/create' render={props => <CreateForm
             errors={errors}
             removeError={removeError}
