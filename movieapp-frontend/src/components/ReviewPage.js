@@ -1,4 +1,5 @@
 import React from 'react';
+import Moment from 'react-moment';
 
 const ReviewPage = (props) => {
     const {image, title, user, text, date} = props.location.aboutProps;
@@ -12,7 +13,7 @@ const ReviewPage = (props) => {
                 </div> 
                 <div className='reviewPage-content'>
                     <p className='reviewPage-text'>{text}</p>
-                    <h5 className='reviewPage-date'>{date}</h5>
+                    <Moment className='reviewPage-date' format='DD MM YYYY'>{date}</Moment>
                 </div>
             </div>
         </div>

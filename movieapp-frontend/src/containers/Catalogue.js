@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Review from '../components/Review';
 import { connect } from "react-redux";
 import {fetchReviews} from '../store/actions/reviews';
+import Landing from '../components/Landing';
 
 class Catalogue extends Component {
     constructor(props){
@@ -42,7 +43,7 @@ class Catalogue extends Component {
     if(!currentUser.isAuthenticated){
         return(
             <div>
-                <h1>Hi this is the homepage</h1>
+                <Landing/>
             </div>
         )
     }

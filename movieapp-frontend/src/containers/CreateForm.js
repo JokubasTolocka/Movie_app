@@ -65,12 +65,12 @@ class CreateForm extends Component {
                             type='text'
                         />
                         <label htmlFor='review'/>
-                        <input 
-                            className='create-input'
+                        <textarea
+                            rows='10'
+                            cols='25' 
+                            className='create-input textarea'
                             placeholder='Your Review'
                             name='text'
-                            rows='2'
-                            cols='25'
                             onChange={this.handleChange}
                             type='text'
                         />
@@ -81,8 +81,7 @@ class CreateForm extends Component {
                     </form>
                 </div>
                 <div className='preview'>
-                    <h2 >Preview</h2>
-                    <div className='preview-back-shadow'>
+                    <h2 >Preview:</h2>
                         <div className='create-preview' >
                             <div className='preview-top'>
                                 <img className='preview-image' src={this.state.image} alt=''/>
@@ -94,7 +93,6 @@ class CreateForm extends Component {
                                 <h5 className='preview-date'>{this.state.text ? today : ''}</h5>
                             </div>
                         </div>
-                    </div> 
                 </div>
             </div>
         );

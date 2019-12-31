@@ -15,10 +15,9 @@ class AuthForm extends Component {
         const authType = this.props.signUp ? "signup" : "signin";
         this.props.onAuth(authType, this.state)
           .then(() => {
-            console.log('history push');
             this.props.history.push("/");
           }).catch((e) => {
-            return console.log(e);
+            return e;
           });
     };
 
@@ -42,19 +41,17 @@ class AuthForm extends Component {
         });
     
         return (
-          <div>
-            <div className="">
-              <div className="">
-                <form onSubmit={this.handleSubmit}>
-                  <h2>{heading}</h2>
+              <div >
+                <form onSubmit={this.handleSubmit} className="auth-form">
+                  <h2 className='auth-heading'>{heading}</h2>
                   {errors.message && (
-                    <div className="">{errors.message}</div>
+                    <div className="auth-error">{errors.message.toString()}</div>
                   )}
                   <label htmlFor="email"></label>
                   <input
                     placeholder='Email'
                     autoComplete="off"
-                    className=""
+                    className="auth-input"
                     id="email"
                     name="email"
                     onChange={this.handleChange}
@@ -65,7 +62,7 @@ class AuthForm extends Component {
                   <input
                     placeholder='Password'
                     autoComplete="off"
-                    className=""
+                    className="auth-input"
                     id="password"
                     name="password"
                     onChange={this.handleChange}
@@ -78,7 +75,7 @@ class AuthForm extends Component {
                       <input
                         placeholder='Username'
                         autoComplete="off"
-                        className=""
+                        className="auth-input"
                         id="username"
                         name="username"
                         onChange={this.handleChange}
@@ -89,15 +86,13 @@ class AuthForm extends Component {
                   )}
                   <button
                     type="submit"
-                    className=""
+                    className="auth-button"
                   >
                     {buttonText}
                   </button>
                 </form>
               </div>
-            </div>
-          </div>
-      );
+        );
   }
 }
     
