@@ -11,7 +11,14 @@ Done tasks:
 7. Implement Redux to get all the reviews from the DB and also post.
 8. User Schema
 9. Auth and Review routes
+10. Set up landing page.
 
 Left to do:
+1. Post reviews as yourself
 2. Delete and update reviews
-3. Restyle everything for modern looks
+3. Implement rating system
+4. Set up user page with their reviews, maybe a bio?
+5. Make it so that the Catalogue would have new reviews, top reviews and you can press a button to browse all reviews
+
+
+
