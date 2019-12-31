@@ -9,8 +9,9 @@ Done tasks:
 5. Review Page, where you can view the review.
 6. Implement Searchbar functionality
 7. Implement Redux to get all the reviews from the DB and also post.
+8. User Schema
+9. Auth and Review routes
 
 Left to do:
-1. Authorization
-2. Delete and update posts
+2. Delete and update reviews
 3. Restyle everything for modern looks
