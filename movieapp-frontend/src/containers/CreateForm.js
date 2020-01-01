@@ -7,7 +7,7 @@ class CreateForm extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
-            user: '',
+            user: this.props.currentUser.user.username,
             title: '',
             image: '',
             text: ''
@@ -36,8 +36,8 @@ class CreateForm extends Component {
                     <h2>Your Review:</h2>
                     <form onSubmit={this.handleSubmit} className='create-form'>
                         {this.props.errors.message && (
-                            <div>
-                                <h5>{this.props.errors.message}</h5>
+                            <div className="auth-error">
+                                {this.props.errors.message}
                             </div>
                         )}
                         <label htmlFor='movie'/>
@@ -45,14 +45,6 @@ class CreateForm extends Component {
                             className='create-input'
                             placeholder='Movie Title'
                             name='title'
-                            onChange={this.handleChange}
-                            type='text'
-                        />
-                        <label htmlFor='creator'/>
-                        <input
-                            className='create-input'
-                            placeholder='Your Name'
-                            name='user'
                             onChange={this.handleChange}
                             type='text'
                         />
@@ -101,7 +93,8 @@ class CreateForm extends Component {
 
 function mapStateToProps(state) {
     return {
-      errors: state.errors
+      errors: state.errors,
+      currentUser: state.currentUser
     };
   }
 

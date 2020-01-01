@@ -6,14 +6,19 @@ class AuthForm extends Component {
         this.state = {
           email: "",
           username: "",
-          password: ""
+          password: "",
+          hidden: true
         };
+        this.toggleShow = this.toggleShow.bind(this);
+    }
+    componentWillMount(){
+      this.setState({hidden: true});
     }
 
     handleSubmit = e => {
         e.preventDefault();
         const authType = this.props.signUp ? "signup" : "signin";
-        this.props.onAuth(authType, this.state)
+        this.props.onAuth(authType, {email: this.state.email, username: this.state.username, password: this.state.password})
           .then(() => {
             this.props.history.push("/");
           }).catch((e) => {
@@ -24,6 +29,9 @@ class AuthForm extends Component {
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value });
     };
+    toggleShow(){
+      this.setState({hidden: !this.state.hidden});
+    }
 
     render() {
         const { email, username, password} = this.state;
@@ -58,17 +66,20 @@ class AuthForm extends Component {
                     type="text"
                     value={email}
                   />
+                  <div className='auth-password'>
                   <label htmlFor="password"></label>
                   <input
                     placeholder='Password'
                     autoComplete="off"
-                    className="auth-input"
+                    className="auth-password-input"
                     id="password"
                     name="password"
                     onChange={this.handleChange}
-                    type="password"
+                    type={this.state.hidden ? 'password' : 'text'}
                     value={password}
                   />
+                  <h3 className='auth-visible' onClick={this.toggleShow}><i className="far fa-eye"></i></h3>
+                  </div>
                   {signUp && (
                     <div>
                       <label htmlFor="username"></label>
@@ -86,7 +97,7 @@ class AuthForm extends Component {
                   )}
                   <button
                     type="submit"
-                    className="auth-button"
+                    className="auth-button btn-grad"
                   >
                     {buttonText}
                   </button>

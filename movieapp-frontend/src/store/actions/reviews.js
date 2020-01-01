@@ -9,17 +9,20 @@ export const loadReviews = reviews => ({
 
 export const fetchReviews = () => {
     return dispatch => {
-        return apiCall('get', 'http://localhost:8000')
+        return apiCall('get', 'http://localhost:8000/')
             .then((res) => {
                 dispatch(loadReviews(res))
             })
-            .catch(err => dispatch(addError(err)));
+            .catch(err => {dispatch(addError(err))});
     };
 };
 
 export const postNewReview = review => (dispatch, getState) => {
-    return apiCall("post", `http://localhost:8000/review`, review)
-      .then(res => {})
+    let {currentUser} = getState();
+    const id = currentUser.user.id
+    return apiCall("post", `http://localhost:8000/users/${id}/reviews`, review)
+      .then(res => {
+      })
       .catch(err => {
         addError(err.message)});
   };
