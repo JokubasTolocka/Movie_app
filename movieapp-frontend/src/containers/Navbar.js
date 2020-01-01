@@ -17,7 +17,7 @@ class Navbar extends Component{
                 {this.props.currentUser.isAuthenticated ? (
                     <div>
                         <Link to={`/${this.props.currentUser.user.id}`} className='nav-userButton'><i className="far fa-user"></i> Profile</Link>
-                        <Link to='/create' className='nav-button'>Create Review</Link>
+                        <Link to={`/users/${this.props.currentUser.user.id}/reviews/new`} className='nav-button'>Create Review</Link>
                         <button className='nav-logout' onClick={this.logout}><i className="fas fa-sign-out-alt"></i></button>
                     </div>
                 ): (

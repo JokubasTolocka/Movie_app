@@ -58,6 +58,9 @@ body{
   margin-left: 10px;
   cursor: pointer;
 }
+.nav-logout:hover{
+  background-color: #e6e6e6;
+}
 
 
 .nav-button, .nav-userButton{
@@ -140,6 +143,7 @@ body{
   padding: 15px 0;
 }
 .review-title{
+  text-transform: capitalize;
   font-size: 20px;
   margin-top: 0;
   color: white;
@@ -265,6 +269,7 @@ body{
   text-align: center;
 }
 .preview-text{
+  text-align: justify;
   margin-top: 0px;
   font-size: 8px;
   margin: 20px 15%; 
@@ -314,6 +319,7 @@ body{
   text-align: center;
 }
 .reviewPage-text{
+  text-align: justify;
   width: 400px;
   margin-top: 0px;
   font-size: 16px;
@@ -322,9 +328,10 @@ body{
 .reviewPage-date{
   width: 360px;
   padding-right: 15px;
-  text-align: right;
-  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
   margin: 0px auto;
+  font-size: 14px;
   color: #949494;
 }
 

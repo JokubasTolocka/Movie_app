@@ -1,6 +1,6 @@
 import {apiCall} from '../../services/api';
 import {addError} from './errors';
-import { LOAD_REVIEWS} from '../actionTypes';
+import { LOAD_REVIEWS, REMOVE_REVIEW} from '../actionTypes';
 
 export const loadReviews = reviews => ({
     type: LOAD_REVIEWS,
@@ -25,4 +25,19 @@ export const postNewReview = review => (dispatch, getState) => {
       })
       .catch(err => {
         addError(err.message)});
-  };
+};
+
+export const remove = id => ({
+    type: REMOVE_REVIEW,
+    id
+});
+
+export const removeReview = (user_id, review_id) => {
+return dispatch => {
+    return apiCall("delete", `http://localhost/users/${user_id}/reviews/${review_id}`)
+    .then(() => dispatch(remove(review_id)))
+    .catch(err => {
+        dispatch(addError(err.messages))
+    });
+};
+};

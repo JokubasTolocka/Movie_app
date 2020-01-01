@@ -3,6 +3,7 @@ import CreateForm from './CreateForm';
 import ReviewPage from '../components/ReviewPage';
 import Catalogue from './Catalogue';
 import AuthForm from './AuthForm';
+import withAuth from '../hocs/withAuth';
 import {authUser} from '../store/actions/auth';
 import {Switch, Route, withRouter} from 'react-router-dom';
 import { connect } from "react-redux";
@@ -18,10 +19,7 @@ const Main = props => {
           currentUser={currentUser}
           {...props}/>}
           />
-          <Route exact path='/create' render={props => <CreateForm
-            errors={errors}
-            removeError={removeError}
-            {...props}/>}/>
+          <Route path="/users/:id/reviews/new" component={withAuth(CreateForm)}/>
           <Route exact path='/signin' render={props => {
             return(
               <AuthForm
@@ -49,7 +47,7 @@ const Main = props => {
             );
           }}
           />
-          <Route path='/review/:id' render={props => <ReviewPage {...props}/>}/>
+          <Route path='/users/:id/reviews/:id' render={props => <ReviewPage {...props}/>}/>
         </Switch>
       </div>
     );
