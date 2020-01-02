@@ -290,7 +290,7 @@ body{
   flex-direction: column;
 }
 
-.reviewPage-top{
+.reviewPage-top{  
   margin-top: 50px;
   display: flex;
   flex-direction: column;
@@ -333,6 +333,38 @@ body{
   margin: 0px auto;
   font-size: 14px;
   color: #949494;
+}
+.reviewPage-buttons{
+  display: flex;
+  justify-content: center;
+}
+.reviewPage-delete, .reviewPage-update{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  margin: 10px 8px;
+  width: 170px;
+  border: none;
+  border-radius: 20px;
+  height: 35px;
+  background-size: 300% 100%;
+  color: #353535;
+}
+.reviewPage-delete{
+  /* background: rgb(255,129,113); */
+  background-image: linear-gradient(to right, rgba(255,129,113,1), rgba(245,71,71,1));
+  box-shadow: 0 4px 15px 0 rgba(245, 71, 71, 0.836);
+}
+.reviewPage-update{
+  /* background: rgb(242,192,106); */
+  background-image: linear-gradient(to right, rgba(242,192,106,1), rgba(230,166,55,1));
+  box-shadow: 0 4px 15px 0 rgba(230, 166, 55, 0.849);
+}
+.reviewPage-delete:hover, .reviewPage-update:hover{
+  background-position: 98% 0;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
 }
 
 /* Authorization */

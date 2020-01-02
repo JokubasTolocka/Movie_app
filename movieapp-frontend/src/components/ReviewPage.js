@@ -13,6 +13,7 @@ class ReviewPage extends Component{
             user: '',
             text: '',
             date: '',
+            id: ''
         }
     }
     componentDidMount(){
@@ -23,12 +24,18 @@ class ReviewPage extends Component{
                     title: res.title,
                     user: res.user,
                     text: res.text,
-                    date: res.createdAt
+                    date: res.createdAt,
+                    id: res._id
             });
             })
             .catch((err) => {
                 console.log(err)
             })
+    }
+    removeRev = (e) => {
+        e.preventDefault();
+        this.props.removeReview(this.state.user, this.state.id);
+        this.props.history.push('/');
     }
     render(){
         const {title, user, text, date, image} = this.state;
@@ -44,24 +51,25 @@ class ReviewPage extends Component{
                         <p className='reviewPage-text'>{text}</p>
                         <Moment className='reviewPage-date' format='DD MM YYYY'>{date}</Moment>
                     </div>
-                    {/* {this.props.currentUser.user.id === this.state.user &&
+                    {this.props.currentUser.user.id === this.state.user &&
                     <div className='reviewPage-buttons'>
-                        <button className='reviewPage-delete'>Delete <i class="far fa-trash-alt"></i></button>
+                        <button className='reviewPage-update'>Update <i className="fas fa-sync-alt"></i></button>
+                        <button className='reviewPage-delete' onClick={this.removeRev}>Delete <i className="far fa-trash-alt"></i></button>
                     </div>
-                    } */}
+                    }
                 </div>
             </div>
         )
     }
 }
 
-// function mapStateToProps(state){
-//     return {
-//         currentUser: state.currentUser
-//     }
-// }
+function mapStateToProps(state){
+    return {
+        currentUser: state.currentUser
+    }
+}
 
 
-// export default connect(mapStateToProps, {})(ReviewPage);
+export default connect(mapStateToProps, {removeReview})(ReviewPage);
 
-export default ReviewPage;
+// export default ReviewPage;

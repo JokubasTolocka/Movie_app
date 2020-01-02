@@ -33,11 +33,13 @@ export const remove = id => ({
 });
 
 export const removeReview = (user_id, review_id) => {
-return dispatch => {
-    return apiCall("delete", `http://localhost/users/${user_id}/reviews/${review_id}`)
-    .then(() => dispatch(remove(review_id)))
-    .catch(err => {
-        dispatch(addError(err.messages))
-    });
-};
+    return dispatch => {
+        return apiCall("delete", `http://localhost:8000/users/${user_id}/reviews/${review_id}`)
+        .then(() => {
+            dispatch(remove(review_id))}
+            )
+        .catch(err => {
+            dispatch(addError(err.messages))
+        });
+    };
 };
