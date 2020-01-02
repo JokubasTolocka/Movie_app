@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {apiCall} from '../services/api';
+import { connect } from "react-redux";
+import { removeReview } from "../store/actions/reviews";
 import Moment from 'react-moment';
 
 class ReviewPage extends Component{
@@ -42,11 +44,24 @@ class ReviewPage extends Component{
                         <p className='reviewPage-text'>{text}</p>
                         <Moment className='reviewPage-date' format='DD MM YYYY'>{date}</Moment>
                     </div>
+                    {/* {this.props.currentUser.user.id === this.state.user &&
+                    <div className='reviewPage-buttons'>
+                        <button className='reviewPage-delete'>Delete <i class="far fa-trash-alt"></i></button>
+                    </div>
+                    } */}
                 </div>
             </div>
         )
     }
 }
 
+// function mapStateToProps(state){
+//     return {
+//         currentUser: state.currentUser
+//     }
+// }
+
+
+// export default connect(mapStateToProps, {})(ReviewPage);
 
 export default ReviewPage;
