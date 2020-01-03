@@ -3,6 +3,7 @@ import CreateForm from './CreateForm';
 import ReviewPage from '../components/ReviewPage';
 import Catalogue from './Catalogue';
 import AuthForm from './AuthForm';
+import Profile from '../components/Profile';
 import withAuth from '../hocs/withAuth';
 import {authUser} from '../store/actions/auth';
 import {Switch, Route, withRouter} from 'react-router-dom';
@@ -47,7 +48,9 @@ const Main = props => {
             );
           }}
           />
-          <Route path='/users/:id/reviews/:id' render={props => <ReviewPage {...props}/>}/>
+          <Route exact path='/user/:id' render={props => <Profile {...props}/>}/>
+          <Route exact path='/users/:id/reviews/:id' render={props => <ReviewPage {...props}/>}/>
+          <Route path='/users/:id/reviews/:id/edit' render={props => <CreateForm Edit {...props}/>}/>
         </Switch>
       </div>
     );

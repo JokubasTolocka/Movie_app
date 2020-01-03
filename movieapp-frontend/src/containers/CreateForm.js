@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
+import {apiCall} from '../services/api';
 import { postNewReview } from "../store/actions/reviews";
 
 class CreateForm extends Component {
@@ -13,6 +14,30 @@ class CreateForm extends Component {
             text: ''
         }
     };
+    componentDidMount(){
+        if(window.location.pathname.match('/users/.*/reviews/.*/edit')){
+            let ReviewUrl = window.location.pathname.slice(0,64);
+            apiCall('get', `http://localhost:8000${ReviewUrl}`)
+            .then((res) => {
+                this.setState({
+                    image: res.image,
+                    title: res.title,
+                    text: res.text
+            });
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        }
+    }
+    handleEdit = (e) => {
+        e.preventDefault();
+        let ReviewUrl = window.location.pathname.slice(0,64);
+        apiCall('put', `http://localhost:8000${ReviewUrl}`, this.state);
+        this.setState({user: '', title: '', image: '', text: ''});
+        this.props.history.push(ReviewUrl);
+        
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -47,29 +72,33 @@ class CreateForm extends Component {
                             name='title'
                             onChange={this.handleChange}
                             type='text'
+                            value={this.state.title}
                         />
                         <label htmlFor='image'/>
                         <input
                             className='create-input'
                             placeholder='URL for the Image of that Movie'
                             name='image'
+                            value={this.state.image}
                             onChange={this.handleChange}
                             type='text'
                         />
                         <label htmlFor='review'/>
                         <textarea
                             rows='10'
-                            cols='25' 
+                            cols='25'
+                            value={this.state.text} 
                             className='create-input textarea'
                             placeholder='Your Review'
                             name='text'
                             onChange={this.handleChange}
                             type='text'
                         />
-                        <button
+                        {!this.props.Edit ? <button
                             className='create-button'
                             type='submit'
-                        >Submit!</button>
+                        >Submit!</button> :
+                        <button onClick={this.handleEdit} id='create-edit-button' className='create-button'>Edit!</button>}
                     </form>
                 </div>
                 <div className='preview'>

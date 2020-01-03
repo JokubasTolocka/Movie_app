@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {apiCall} from '../services/api';
 import { connect } from "react-redux";
 import { removeReview } from "../store/actions/reviews";
+import {Link} from 'react-router-dom';
 import Moment from 'react-moment';
 
 class ReviewPage extends Component{
@@ -53,7 +54,7 @@ class ReviewPage extends Component{
                     </div>
                     {this.props.currentUser.user.id === this.state.user &&
                     <div className='reviewPage-buttons'>
-                        <button className='reviewPage-update'>Update <i className="fas fa-sync-alt"></i></button>
+                        <Link to={`/users/${this.state.user}/reviews/${this.state.id}/edit`} className='reviewPage-update'>Update <i className="fas fa-sync-alt"></i></Link>
                         <button className='reviewPage-delete' onClick={this.removeRev}>Delete <i className="far fa-trash-alt"></i></button>
                     </div>
                     }

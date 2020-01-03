@@ -218,6 +218,10 @@ body{
   -moz-box-shadow: 10px 10px 51px -42px rgba(234,133,78,0.52);
   box-shadow: 10px 10px 51px -42px rgba(234,133,78,0.52);
 }
+#create-edit-button{
+  background-image: linear-gradient(to right, rgba(242,192,106,1), rgba(230,166,55,1));
+  box-shadow: 0 4px 15px 0 rgba(230, 166, 55, 0.623);
+}
 
 /* preview */
 
@@ -301,6 +305,9 @@ body{
   border-radius: 300px;
   max-width: 200px;
   max-height: 200px;
+  -webkit-box-shadow: 10px 10px 60px -4px rgba(71,100,230,0.48);
+  -moz-box-shadow: 10px 10px 60px -4px rgba(71,100,230,0.48);
+  box-shadow: 10px 10px 60px -4px rgba(71,100,230,0.48);
 }
 
 .reviewPage-title{
@@ -321,20 +328,20 @@ body{
 .reviewPage-text{
   text-align: justify;
   width: 400px;
-  margin-top: 0px;
   font-size: 16px;
-  margin: 40px auto; 
+  margin: 40px auto 0 auto;
 }
 .reviewPage-date{
   width: 360px;
   padding-right: 15px;
   display: flex;
   justify-content: flex-end;
-  margin: 0px auto;
+  margin: 13px auto 0px auto;
   font-size: 14px;
   color: #949494;
 }
 .reviewPage-buttons{
+  margin-top: 35px;
   display: flex;
   justify-content: center;
 }
@@ -345,17 +352,18 @@ body{
   width: 170px;
   border: none;
   border-radius: 20px;
-  height: 35px;
+  padding: 10px 0;
   background-size: 300% 100%;
   color: #353535;
 }
 .reviewPage-delete{
-  /* background: rgb(255,129,113); */
   background-image: linear-gradient(to right, rgba(255,129,113,1), rgba(245,71,71,1));
   box-shadow: 0 4px 15px 0 rgba(245, 71, 71, 0.836);
 }
 .reviewPage-update{
-  /* background: rgb(242,192,106); */
+  font-size: 13.3333px;
+  text-align: center;
+  text-decoration: none;
   background-image: linear-gradient(to right, rgba(242,192,106,1), rgba(230,166,55,1));
   box-shadow: 0 4px 15px 0 rgba(230, 166, 55, 0.849);
 }
