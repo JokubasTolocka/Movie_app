@@ -16,7 +16,9 @@ const Main = props => {
     return (
       <div className="container">
         <Switch>
-          <Route exact path='/' render={props => <Catalogue 
+          <Route exact path='/' render={props => <Catalogue
+          errors={errors}
+          removeError={removeError}
           currentUser={currentUser}
           {...props}/>}
           />

@@ -109,6 +109,11 @@ body{
 .review-list-offline-h3{
   color: rgb(94, 94, 94);
 }
+#catalogue-error{
+  width: 80%;
+  margin: auto auto 20px auto;
+
+}
 
 /* Review */
 

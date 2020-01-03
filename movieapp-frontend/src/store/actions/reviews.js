@@ -24,7 +24,7 @@ export const postNewReview = review => (dispatch, getState) => {
       .then(res => {
       })
       .catch(err => {
-        addError(err.message)});
+        dispatch(addError('Review submition failed. Did you fill out all the fields?'))});
 };
 
 export const remove = id => ({

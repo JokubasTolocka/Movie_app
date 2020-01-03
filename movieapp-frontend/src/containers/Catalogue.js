@@ -23,7 +23,7 @@ class Catalogue extends Component {
         this.props.fetchReviews();
     }
     render(){
-    const {reviews, currentUser} = this.props;
+    const {reviews, currentUser, errors, removeError, history} = this.props;
     const filteredReviews = reviews.filter(review => {
         return review.title.toLowerCase().includes(this.state.searchInput.toLowerCase());
     });
@@ -40,6 +40,9 @@ class Catalogue extends Component {
             />
         );
     });
+    history.listen(() => {
+        removeError();
+      });
     if(!currentUser.isAuthenticated){
         return(
             <div>
@@ -56,7 +59,10 @@ class Catalogue extends Component {
     //     );
     // } else {
     return(
-            <div>                  
+            <div>
+                {errors.message && (
+                    <div className="auth-error" id='catalogue-error'>{errors.message.toString()}</div>
+                  )}                  
                 <div>
                     <input
                         onChange={this.onSearchChange}
