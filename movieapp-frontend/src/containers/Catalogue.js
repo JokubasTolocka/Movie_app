@@ -50,14 +50,6 @@ class Catalogue extends Component {
             </div>
         )
     }
-    // if(!reviews) {
-    //     return (
-    //         <div className='loading'>
-    //             <h1 className='review-list-offline'>Loading Reviews...</h1>
-    //             <h3 className='review-list-offline-h3'>It is also possible that you are disconnected from the internet.</h3>
-    //         </div>
-    //     );
-    // } else {
     return(
             <div>
                 {errors.message && (
@@ -76,7 +68,7 @@ class Catalogue extends Component {
                     {ReviewList}
                 </div>
             </div>
-        );
+    );
     }
 }
 

@@ -479,3 +479,12 @@ body{
   object-fit: cover;
   width: 300px;
 }
+
+/* Profile */
+.profile-header{
+  color: #0a1969;
+  margin: 20px 48px;
+  padding: 8px 20px;
+  border-radius: 8px;
+  background-image: linear-gradient(to right, #649AEB , #557FE8 , #4765E6 )
+}

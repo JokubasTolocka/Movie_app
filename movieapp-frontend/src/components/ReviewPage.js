@@ -46,7 +46,11 @@ class ReviewPage extends Component{
                     <div className='reviewPage-top'>
                         <img className='reviewPage-image' src={image} alt={title}/>
                         <h1 className='reviewPage-title'>{title}</h1>
-                        <h3 className='reviewPage-user'>Review by: {user}</h3>
+                        {this.props.currentUser.user.id === this.state.user ?
+                        <h3 className='reviewPage-user'>This is Your review.</h3>
+                        :
+                        <Link to={`/user/${user}`} className='reviewPage-user'>Other reviews by this author.</Link>
+                        }
                     </div> 
                     <div className='reviewPage-content'>
                         <p className='reviewPage-text'>{text}</p>
@@ -72,5 +76,3 @@ function mapStateToProps(state){
 
 
 export default connect(mapStateToProps, {removeReview})(ReviewPage);
-
-// export default ReviewPage;
