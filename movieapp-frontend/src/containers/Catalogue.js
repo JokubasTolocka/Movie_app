@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import Review from './Review';
+import Review from '../components/Review';
 import { connect } from "react-redux";
-import {fetchReviews} from './store/actions/reviews';
+import {fetchReviews} from '../store/actions/reviews';
+import Landing from '../components/Landing';
 
 class Catalogue extends Component {
     constructor(props){
@@ -22,7 +23,7 @@ class Catalogue extends Component {
         this.props.fetchReviews();
     }
     render(){
-    const {reviews} = this.props;
+    const {reviews, currentUser, errors, removeError, history} = this.props;
     const filteredReviews = reviews.filter(review => {
         return review.title.toLowerCase().includes(this.state.searchInput.toLowerCase());
     });
@@ -39,16 +40,21 @@ class Catalogue extends Component {
             />
         );
     });
-    if(!reviews) {
-        return (
-            <div className='loading'>
-                <h1 className='review-list-offline'>Loading Reviews...</h1>
-                <h3 className='review-list-offline-h3'>It is also possible that you are disconnected from the internet.</h3>
-            </div>
-        );
-    } else {
+    history.listen(() => {
+        removeError();
+      });
+    if(!currentUser.isAuthenticated){
         return(
-            <div>                  
+            <div>
+                <Landing/>
+            </div>
+        )
+    }
+    return(
+            <div>
+                {errors.message && (
+                    <div className="auth-error" id='catalogue-error'>{errors.message.toString()}</div>
+                  )}                  
                 <div>
                     <input
                         onChange={this.onSearchChange}
@@ -62,10 +68,10 @@ class Catalogue extends Component {
                     {ReviewList}
                 </div>
             </div>
-        );
+    );
     }
 }
-}
+
 
 function mapStateToProps(state){
     return {

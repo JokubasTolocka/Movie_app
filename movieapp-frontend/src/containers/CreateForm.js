@@ -1,18 +1,43 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
-import { postNewReview } from "./store/actions/reviews";
+import {apiCall} from '../services/api';
+import { postNewReview } from "../store/actions/reviews";
 
 class CreateForm extends Component {
     constructor(props){
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
-            user: '',
+            user: this.props.currentUser.user.username,
             title: '',
             image: '',
             text: ''
         }
     };
+    componentDidMount(){
+        if(window.location.pathname.match('/users/.*/reviews/.*/edit')){
+            let ReviewUrl = window.location.pathname.slice(0,64);
+            apiCall('get', `http://localhost:8000${ReviewUrl}`)
+            .then((res) => {
+                this.setState({
+                    image: res.image,
+                    title: res.title,
+                    text: res.text
+            });
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        }
+    }
+    handleEdit = (e) => {
+        e.preventDefault();
+        let ReviewUrl = window.location.pathname.slice(0,64);
+        apiCall('put', `http://localhost:8000${ReviewUrl}`, this.state);
+        this.setState({user: '', title: '', image: '', text: ''});
+        this.props.history.push(ReviewUrl);
+        
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -36,8 +61,8 @@ class CreateForm extends Component {
                     <h2>Your Review:</h2>
                     <form onSubmit={this.handleSubmit} className='create-form'>
                         {this.props.errors.message && (
-                            <div>
-                                <h5>{this.props.errors.message}</h5>
+                            <div className="auth-error">
+                                {this.props.errors.message}
                             </div>
                         )}
                         <label htmlFor='movie'/>
@@ -47,42 +72,37 @@ class CreateForm extends Component {
                             name='title'
                             onChange={this.handleChange}
                             type='text'
-                        />
-                        <label htmlFor='creator'/>
-                        <input
-                            className='create-input'
-                            placeholder='Your Name'
-                            name='user'
-                            onChange={this.handleChange}
-                            type='text'
+                            value={this.state.title}
                         />
                         <label htmlFor='image'/>
                         <input
                             className='create-input'
                             placeholder='URL for the Image of that Movie'
                             name='image'
+                            value={this.state.image}
                             onChange={this.handleChange}
                             type='text'
                         />
                         <label htmlFor='review'/>
-                        <input 
-                            className='create-input'
+                        <textarea
+                            rows='10'
+                            cols='25'
+                            value={this.state.text} 
+                            className='create-input textarea'
                             placeholder='Your Review'
                             name='text'
-                            rows='2'
-                            cols='25'
                             onChange={this.handleChange}
                             type='text'
                         />
-                        <button
+                        {!this.props.Edit ? <button
                             className='create-button'
                             type='submit'
-                        >Submit!</button>
+                        >Submit!</button> :
+                        <button onClick={this.handleEdit} id='create-edit-button' className='create-button'>Edit!</button>}
                     </form>
                 </div>
                 <div className='preview'>
-                    <h2 >Preview</h2>
-                    <div className='preview-back-shadow'>
+                    <h2 >Preview:</h2>
                         <div className='create-preview' >
                             <div className='preview-top'>
                                 <img className='preview-image' src={this.state.image} alt=''/>
@@ -94,7 +114,6 @@ class CreateForm extends Component {
                                 <h5 className='preview-date'>{this.state.text ? today : ''}</h5>
                             </div>
                         </div>
-                    </div> 
                 </div>
             </div>
         );
@@ -103,7 +122,8 @@ class CreateForm extends Component {
 
 function mapStateToProps(state) {
     return {
-      errors: state.errors
+      errors: state.errors,
+      currentUser: state.currentUser
     };
   }
 

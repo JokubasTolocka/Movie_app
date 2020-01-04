@@ -1,24 +1,40 @@
+require('dotenv').config();
 const express = require('express'),
       app = express(),
       bodyParser = require('body-parser'),
       PORT = 8000 || process.env.PORT,
       db = require('./models'),
       cors = require('cors'),
-      errorHandler = require('./helpers/error');
-      reviewRoutes = require('./routes/index');
-      
+      helmet = require('helmet'),
+      {loginRequired, ensureCorrectUser} = require('./middleware/auth'),
+      errorHandler = require('./helpers/error'),
+      authRoutes = require('./routes/auth'),
+      reviewRoutes = require('./routes/index'),
+      userRoutes = require('./routes/user');
+
+//later on i need to set the cors only for MY page, not anybodys request
 app.use(cors());
+//
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/review',
+app.use('/auth', authRoutes);
+app.use('/users/:id/reviews',
     reviewRoutes
-)
+);
+app.use('/user/:id',
+    loginRequired,
+    userRoutes
+);
 
-app.get('/', async function(req,res,next){
+app.get('/', loginRequired, async function(req,res,next){
     try{
         let reviews = await db.Review.find()
-            .sort({createdAt: 'desc'});
+            .sort({createdAt: 'desc'})
+            .populate("user", {
+                username: true
+            });
             return res.status(200).json(reviews);
     } catch(err){
         return next(err);
