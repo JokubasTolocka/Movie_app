@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { removeReview } from "../store/actions/reviews";
 import {Link} from 'react-router-dom';
 import Moment from 'react-moment';
+import CommentForm from '../containers/CommentForm';
 
 class ReviewPage extends Component{
     constructor(props){
@@ -62,11 +63,13 @@ class ReviewPage extends Component{
                         <button className='reviewPage-delete' onClick={this.removeRev}>Delete <i className="far fa-trash-alt"></i></button>
                     </div>
                     }
+                    <CommentForm/>
                 </div>
             </div>
         )
-    }
+        }
 }
+
 
 function mapStateToProps(state){
     return {

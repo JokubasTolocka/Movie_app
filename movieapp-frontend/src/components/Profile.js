@@ -42,7 +42,9 @@ class Profile extends Component{
         });
         return(
             <div>
+                {this.state.username ?
                 <h1 className='profile-header'>{this.state.username}'s Reviews</h1>
+                : <h1 className='profile-header'>Loading</h1>}
                 <div className='review-list'>
                     {ReviewList}
                 </div>

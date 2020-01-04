@@ -359,6 +359,10 @@ body{
   border-radius: 20px;
   padding: 10px 0;
   background-size: 300% 100%;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
   color: #353535;
 }
 .reviewPage-delete{
@@ -457,7 +461,6 @@ body{
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;}
 
-
 /* Landing */
 
 .landing{
@@ -488,3 +491,32 @@ body{
   border-radius: 8px;
   background-image: linear-gradient(to right, #649AEB , #557FE8 , #4765E6 )
 }
+
+/* Comments */
+.comment-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comment-form .button{
+  margin-top: 20px;
+  padding: 10px 0;
+  width: 356px;
+  border: none;
+  color: #353535;
+  box-shadow: 0 4px 15px 0 rgba(71, 100, 230, 0.541);
+  background-size: 300% 100%;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  background-color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  border-radius: 20px;
+  background-image: linear-gradient(to right, #649AEB , #557FE8 , #4765E6 )
+}
+.comment-form .button:focus{
+  outline: none;
+}
+
