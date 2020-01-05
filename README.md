@@ -12,13 +12,13 @@ Done tasks:
 8. User Schema
 9. Auth and Review routes
 10. Set up landing page.
+11. Post reviews
+12. Edit and delete reviews
+13. Set up Profile page
 
 Left to do:
-1. Post reviews as yourself
-2. Delete and update reviews
-3. Implement rating system
-4. Set up user page with their reviews, maybe a bio?
-5. Make it so that the Catalogue would have new reviews, top reviews and you can press a button to browse all reviews
+1. Add, delete Comments
+2. Make it so that the Catalogue would have new reviews, top reviews and you can press a button to browse all reviews
 
 
 
