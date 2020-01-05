@@ -519,4 +519,32 @@ body{
 .comment-form .button:focus{
   outline: none;
 }
+.commentForm{
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+#comment-button{
+  margin-top: 5px;
+  width: 45px;
+  height: 40px;
+  padding: 0px 0;
+}
+.comment-form-box{
+  width: 352px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+.comment-input{
+  width: 287px;
+  background-color: white;
+  padding: 10px 12px;
+  border-radius: 20px;
+  margin: 5px 16px 10px 0px;
+  border: 2px solid #6194EB;
+  box-shadow: 0 4px 15px 0 rgba(71, 100, 230, 0.541);
+}
+.comment-input:focus{
+  outline: none;
+}
 
