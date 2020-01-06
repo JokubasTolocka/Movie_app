@@ -36,10 +36,17 @@ body{
   color: #4764E6;
   text-decoration: none;
   font-weight: 800;
-  margin-left: 30px;
+  margin-left: 6px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
 }
 .nav-login{
   color: #5e7bff;
+}
+
+.nav-text:hover{
+  background-color: #EBEEFF;
 }
 
 .nav-title{
@@ -57,6 +64,7 @@ body{
   padding: 7px 9px;
   margin-left: 10px;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
 .nav-logout:hover{
   background-color: #e6e6e6;
@@ -75,11 +83,20 @@ body{
   color: white;
   line-height: 28px;
   text-align: center;
+  transition: background-color 0.2s ease-in-out;
+}
+.nav-button:hover{
+  background-color: #e6a637d2;
 }
 
 .nav-userButton{
-  background-color: #EA854E;
+  border: 1px solid #4764E6;
+  color: #4764E6;
+  background-color: white;
   margin-right: 10px;
+}
+.nav-userButton:hover{
+  background-color: #EBEEFF;
 }
 
 /* Main */
@@ -119,7 +136,7 @@ body{
 
 .review-card{
   width: 150px;
-  height: 300px;
+  height: 270px;
   margin: 25px 20px;
   border-radius: 20px;
   position: relative;
@@ -128,17 +145,24 @@ body{
   -moz-box-shadow: 10px 10px 60px -4px rgba(71,100,230,0.48);
   box-shadow: 10px 10px 60px -4px rgba(71,100,230,0.48);
 }
+.review-card:hover .review-content{
+  background-color: #4764E6;
+}
 .review-image{
   width: 150px;
-  height: 300px;
+  height: 270px;
   object-fit: cover;
   border-radius: 20px;
   position: relative;
   -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
   filter: grayscale(50%);
+  -webkit-box-shadow: 0px 41px 38px -19px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 41px 38px -19px rgba(0,0,0,0.75);
+  box-shadow: 0px 41px 38px -19px rgba(0,0,0,0.75);
 }
 
 .review-content{
+  transition: background-color 0.2s ease-in-out;
   background-color: rgba(16, 26, 73, 0.747);
   position: absolute;
   bottom: 0px;
@@ -151,6 +175,7 @@ body{
   text-transform: capitalize;
   font-size: 20px;
   margin-top: 0;
+  padding: 0 5px;
   color: white;
   text-align: center;
 }
@@ -494,10 +519,17 @@ body{
 /* Profile */
 .profile-header{
   color: #0a1969;
-  margin: 20px 48px;
-  padding: 8px 20px;
-  border-radius: 8px;
+  
+  padding: 12px 25px;
+  border-radius: 20px;
   background-image: linear-gradient(to right, #649AEB , #557FE8 , #4765E6 )
+}
+#profile-review-list{
+  border-radius: 20px;
+  padding-bottom: 50px;
+  -webkit-box-shadow: 10px 10px 60px -4px rgba(71,100,230,0.48);
+  -moz-box-shadow: 10px 10px 60px -4px rgba(71,100,230,0.48);
+  box-shadow: 10px 10px 60px -4px rgba(71,100,230,0.48);
 }
 
 /* Comments */

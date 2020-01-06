@@ -45,7 +45,7 @@ class Profile extends Component{
                 {this.state.username ?
                 <h1 className='profile-header'>{this.state.username}'s Reviews</h1>
                 : <h1 className='profile-header'>Loading</h1>}
-                <div className='review-list'>
+                <div className='review-list' id='profile-review-list'>
                     {ReviewList}
                 </div>
             </div>

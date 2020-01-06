@@ -24,10 +24,7 @@ class Catalogue extends Component {
     }
     render(){
     const {reviews, currentUser, errors, removeError, history} = this.props;
-    const filteredReviews = reviews.filter(review => {
-        return review.title.toLowerCase().includes(this.state.searchInput.toLowerCase());
-    });
-    const ReviewList = filteredReviews.map(review => {
+    const ReviewList = reviews.map(review => {
     return (
             <Review
                 key={review._id}
@@ -55,16 +52,7 @@ class Catalogue extends Component {
             <div>
                 {errors.message && (
                     <div className="auth-error" id='catalogue-error'>{errors.message.toString()}</div>
-                  )}                  
-                <div>
-                    <input
-                        onChange={this.onSearchChange}
-                        className='nav-input'
-                        placeholder='Search'
-                        name='searchInput'
-                    />
-                </div>
-                <hr></hr>
+                  )}
                 <div className='review-list'>
                     {ReviewList}
                 </div>
