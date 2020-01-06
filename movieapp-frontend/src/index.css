@@ -589,3 +589,15 @@ body{
   border-radius: 10px;
 }
 
+#comment-delete{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 28px;
+  padding: 5px 0px;
+  box-shadow: none;
+}
+.comment-user-and-delete{
+  display: flex;
+  justify-content: space-between;
+}
+

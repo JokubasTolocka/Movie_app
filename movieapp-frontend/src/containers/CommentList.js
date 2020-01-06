@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {fetchComments} from '../store/actions/comments';
+import {fetchComments, removeComment} from '../store/actions/comments';
 import { connect } from 'react-redux';
 import Comment from '../components/Comment';
 
@@ -16,7 +16,7 @@ class CommentList extends Component{
         this.props.fetchComments(this.state);
     }
     render(){
-        const {comments} = this.props;
+        const {comments, removeComment} = this.props;
         var CommentsList = comments.map(comment =>{
             return(
                 <Comment
@@ -25,6 +25,8 @@ class CommentList extends Component{
                     comment={comment.comment}
                     date={comment.createdAt}
                     username={comment.user.username}
+                    removeComment={removeComment.bind(this, comment._id, this.state.reviewUserId, this.state.reviewId)}
+                    isCurrentUser={this.props.currentUser.user.id === comment.user._id}
                 />
             )
         });
@@ -42,4 +44,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {fetchComments})(CommentList);
+export default connect(mapStateToProps, {fetchComments, removeComment})(CommentList);
