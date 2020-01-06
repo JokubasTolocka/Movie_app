@@ -9,6 +9,7 @@ import {authUser} from '../store/actions/auth';
 import {Switch, Route, withRouter} from 'react-router-dom';
 import { connect } from "react-redux";
 import { removeError } from "../store/actions/errors";
+import AllReviews from './AllReviews';
 
 
 const Main = props => {
@@ -22,6 +23,7 @@ const Main = props => {
           currentUser={currentUser}
           {...props}/>}
           />
+          <Route exact path='/allreviews' render={props => <AllReviews {...props}/>}/>
           <Route path="/users/:id/reviews/new" component={withAuth(CreateForm)}/>
           <Route exact path='/signin' render={props => {
             return(

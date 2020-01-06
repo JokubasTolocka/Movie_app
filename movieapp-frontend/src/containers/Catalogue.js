@@ -3,28 +3,22 @@ import Review from '../components/Review';
 import { connect } from "react-redux";
 import {fetchReviews} from '../store/actions/reviews';
 import Landing from '../components/Landing';
+import {Link} from 'react-router-dom';
 
 class Catalogue extends Component {
-    constructor(props){
-        super(props);
-        this.onSearchChange = this.onSearchChange.bind(this);
-        this.state = {
-            searchInput: ''
-        }
-    }
-    onSearchChange(e){
-        console.log(e.target.value);
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    }
 
     componentDidMount(){
         this.props.fetchReviews();
     }
     render(){
     const {reviews, currentUser, errors, removeError, history} = this.props;
-    const ReviewList = reviews.map(review => {
+    const ReviewsCopy = reviews.map((review) => review);
+
+    const ReviewList = ReviewsCopy.sort(function(a, b) {
+        return b.comments.length - a.comments.length;
+    })
+        .slice(0, 5)
+        .map(review => {
     return (
             <Review
                 key={review._id}
@@ -38,6 +32,21 @@ class Catalogue extends Component {
             />
         );
     });
+
+    const RecentReviewList = reviews.slice(0,5).map(review => {
+        return (
+                <Review
+                    key={review._id}
+                    id={review._id}
+                    title={review.title}
+                    user={review.user._id}
+                    image={review.image}
+                    date={review.createdAt}
+                    text={review.text}
+                    commentAmount={review.comments.length}
+                />
+            );
+        });
     history.listen(() => {
         removeError();
       });
@@ -53,8 +62,20 @@ class Catalogue extends Component {
                 {errors.message && (
                     <div className="auth-error" id='catalogue-error'>{errors.message.toString()}</div>
                   )}
-                <div className='review-list'>
-                    {ReviewList}
+                <div className='review-most-active'>
+                    <h1 className='review-most-active-title'>Most Active Reviews</h1>
+                    <div className='review-list'>
+                        {ReviewList}
+                    </div>
+                </div>
+                <div className='review-most-recent'>
+                    <div className='review-most-recent-top'>
+                        <h1 className='review-most-active-title'>Most Recent Reviews</h1>
+                        <Link to='/allreviews' className='review-browseall'>Browse All</Link>
+                    </div>
+                    <div className='review-list'>
+                        {RecentReviewList}
+                    </div>
                 </div>
             </div>
     );
