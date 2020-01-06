@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { removeReview } from "../store/actions/reviews";
 import {Link} from 'react-router-dom';
 import Moment from 'react-moment';
+import CommentList from '../containers/CommentList';
 import CommentForm from '../containers/CommentForm';
 
 class ReviewPage extends Component{
@@ -40,6 +41,9 @@ class ReviewPage extends Component{
         this.props.history.push('/');
     }
     render(){
+        this.props.history.listen(() => {
+            this.props.removeError();
+          });
         const {title, user, text, date, image} = this.state;
         return(
             <div>
@@ -63,7 +67,11 @@ class ReviewPage extends Component{
                         <button className='reviewPage-delete' onClick={this.removeRev}>Delete <i className="far fa-trash-alt"></i></button>
                     </div>
                     }
-                    <CommentForm/>
+                    {this.props.errors.message && (
+                        <div className="auth-error" id='reviewPage-error'>{this.props.errors.message.toString()}</div>
+                    )}   
+                    <CommentForm removeError={this.props.removeError}/>
+                    <CommentList/>
                 </div>
             </div>
         )
@@ -73,7 +81,8 @@ class ReviewPage extends Component{
 
 function mapStateToProps(state){
     return {
-        currentUser: state.currentUser
+        currentUser: state.currentUser,
+        errors: state.errors
     }
 }
 

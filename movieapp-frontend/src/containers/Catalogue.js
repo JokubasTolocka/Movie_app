@@ -33,10 +33,11 @@ class Catalogue extends Component {
                 key={review._id}
                 id={review._id}
                 title={review.title}
-                user={review.user}
+                user={review.user._id}
                 image={review.image}
                 date={review.createdAt}
                 text={review.text}
+                commentAmount={review.comments.length}
             />
         );
     });

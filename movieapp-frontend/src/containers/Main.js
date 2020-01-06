@@ -51,7 +51,10 @@ const Main = props => {
           }}
           />
           <Route exact path='/user/:id' render={props => <Profile {...props}/>}/>
-          <Route exact path='/users/:id/reviews/:id' render={props => <ReviewPage {...props}/>}/>
+          <Route exact path='/users/:id/reviews/:id' render={props => <ReviewPage
+            removeError={removeError}
+            errors={errors} {...props}/>}
+          />
           <Route path='/users/:id/reviews/:id/edit' render={props => <CreateForm Edit {...props}/>}/>
         </Switch>
       </div>

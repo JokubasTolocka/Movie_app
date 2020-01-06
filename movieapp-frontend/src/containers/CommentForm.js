@@ -1,30 +1,47 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import { postNewComment } from "../store/actions/comments";
 
 class CommentForm extends Component{
     constructor(props){
         super(props);
         this.state = {
             commentFormHidden: true,
-            comment: ''
+            comment: '',
+            user_id: '',
+            reviewUserId: '',
+            reviewId: ''
         }
         this.ShowForm = this.ShowForm.bind(this);
     }
-    componentWillMount(){
-        this.setState({commentFormHidden: true});
+    componentDidMount(){
+        this.setState({
+            commentFormHidden: true,
+            user_id: this.props.currentUser.user.id,
+            reviewUserId: window.location.pathname.slice(7,31),
+            reviewId: window.location.pathname.slice(40,64)
+        });
     }
     ShowForm(){
         this.setState({commentFormHidden: !this.state.commentFormHidden});
     }
     handleChange = e => {
+        this.props.removeError();
         this.setState({ [e.target.name]: e.target.value });
     }
     handleSubmit = e =>{
-        e.preventDefault();
+        // e.preventDefault();
+        this.props.postNewComment(this.state);
+        this.setState({comment: ''});
     }
     render(){
         return(
             <div className='comment-form'>
-                <button onClick={this.ShowForm} className='button btn-grad'>Comment <i className="fas fa-plus"></i></button>
+                <button onClick={this.ShowForm} className='button btn-grad'>
+                    Comment {this.state.commentFormHidden ? 
+                        <i className="fas fa-plus"></i>
+                        : <i className="fas fa-minus"></i>}
+                </button>
                 <div>
                 {!this.state.commentFormHidden ?
                 <div className='comment-form-box'>
@@ -43,8 +60,7 @@ class CommentForm extends Component{
                         id='comment-button'
                         className="button btn-grad"
                         ><i className=" fas fa-plus"></i></button>
-                    </form>
-                    
+                    </form> 
                 </div>
                 : null}
                 </div>
@@ -52,5 +68,10 @@ class CommentForm extends Component{
         );
     }
 }
+function mapStateToProps(state){
+    return {
+       currentUser: state.currentUser 
+    };
+}
 
-export default CommentForm;
+export default connect(mapStateToProps, {postNewComment})(CommentForm);
