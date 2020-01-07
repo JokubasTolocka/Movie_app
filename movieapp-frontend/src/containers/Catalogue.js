@@ -63,14 +63,14 @@ class Catalogue extends Component {
                     <div className="auth-error" id='catalogue-error'>{errors.message.toString()}</div>
                   )}
                 <div className='review-most-active'>
-                    <h1 className='review-most-active-title'>Most Active Reviews</h1>
+                    <h1 className='review-most-active-title'><i className="fas fa-fire catalogue-icon"></i> Active Reviews</h1>
                     <div className='review-list'>
                         {ReviewList}
                     </div>
                 </div>
                 <div className='review-most-recent'>
                     <div className='review-most-recent-top'>
-                        <h1 className='review-most-active-title'>Most Recent Reviews</h1>
+                        <h1 className='review-most-active-title' id='recent-title'><i className="far fa-clock catalogue-icon"></i> Recent Reviews</h1>
                         <Link to='/allreviews' className='review-browseall'>Browse All</Link>
                     </div>
                     <div className='review-list'>

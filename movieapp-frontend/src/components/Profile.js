@@ -37,6 +37,7 @@ class Profile extends Component{
                     image={review.image}
                     date={review.createdAt}
                     text={review.text}
+                    commentAmount={review.comments.length}
                 />
             );
         });

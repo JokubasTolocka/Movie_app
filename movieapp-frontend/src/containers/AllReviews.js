@@ -40,13 +40,15 @@ class AllReviews extends Component{
         });
         return(
             <div>
-                <label htmlFor='search'></label>
-                <input
-                    type='search' 
-                    onChange={this.onSearchChange} 
-                    name='searchInput' 
-                    className='allreviews-input'
-                    placeholder='Search'/>
+                <div className='allreviews-input-box'>
+                    <label htmlFor='search'></label>
+                    <input
+                        type='search' 
+                        onChange={this.onSearchChange} 
+                        name='searchInput' 
+                        className='allreviews-input'
+                        placeholder='Search'/>
+                </div>
                 <div className='review-list'>
                     {ReviewList}
                 </div>

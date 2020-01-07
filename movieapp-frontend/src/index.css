@@ -17,6 +17,10 @@ body{
   padding-top: 3px;
   height: 50px;
 }
+.nav-logo-mobile{
+  display: none;
+}
+
 .App{
   width: 100%;
 }
@@ -107,7 +111,50 @@ body{
 
 /* Catalogue */
 
+.review-most-active-title{
+  padding: 10px 18px;
+  margin: 10px 30px;
+  border-radius: 20px;
+  background: rgb(223,137,79);
+  background: linear-gradient(90deg, rgba(223,137,79,1) 0%, rgba(245,96,51,1) 100%);
+  color: white;
+  -webkit-box-shadow: 0px 0px 35px -13px rgba(242,99,56,1);
+  -moz-box-shadow: 0px 0px 35px -13px rgba(242,99,56,1);
+  box-shadow: 0px 0px 35px -13px rgba(242,99,56,1);
+}
+.review-most-recent-top{
+  border-radius: 20px;
+  display: flex;
+  margin: 10px 30px;
+  justify-content: space-between;
+  box-shadow: 0 4px 15px 0 rgba(71, 100, 230, 0.541);
+  background-image: linear-gradient(to right, #649AEB , #557FE8 , #4765E6 )
+}
+.review-browseall{
+  border-radius: 20px;
+  font-weight: 600;
+  text-align: center;
+  background-color: white;
+  padding:  8px 30px;
+  margin: 10px 30px;
+  color: #4764E6;
+  transition: background-color 0.2s ease-in-out;
+}
+.review-browseall:hover{
+  background-color: #EBEEFF;
+}
+
+#recent-title{
+  margin: 0;
+  background-image: none;
+  box-shadow: none;
+}
+.catalogue-icon{
+  margin-right: 5px;
+}
+
 .review-list{
+  margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -130,6 +177,25 @@ body{
   width: 80%;
   margin: auto auto 20px auto;
 
+}
+/* All reviews */
+
+.allreviews-input{
+  border: none;
+  margin: auto auto;
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  width: 100%;
+  font-family: 'Raleway', sans-serif;
+}
+.allreviews-input:focus{
+  outline: none;
+}
+.allreviews-input-box{
+  width: 70%;
+  transform: translateY(-5px);
+  margin: 0 auto;
 }
 
 /* Review */
@@ -306,6 +372,7 @@ body{
   text-align: center;
 }
 .preview-text{
+  font-family: 'Merriweather', serif;
   text-align: justify;
   margin-top: 0px;
   font-size: 8px;
@@ -359,9 +426,10 @@ body{
   text-align: center;
 }
 .reviewPage-text{
+  font-family: 'Merriweather', serif;
   text-align: justify;
   width: 400px;
-  font-size: 16px;
+  font-size: 14px;
   margin: 40px auto 0 auto;
 }
 .reviewPage-date{
@@ -605,6 +673,8 @@ body{
   padding-left: 8px;
 }
 .comment-text{
+  font-family: 'Merriweather', serif;
+  font-size: 14px;
   margin-top: 12px;
   color: #0a1969;
   padding-left: 8px; 
@@ -633,3 +703,158 @@ body{
   justify-content: space-between;
 }
 
+/* mobile */
+
+@media (max-width: 750px) {
+  .nav-text-mobile{
+    display: none;
+  }
+  .nav-button{
+    width: 100px;
+  }
+  .nav-logo-mobile{
+    display: inline-block;
+  }
+  .review-browseall{
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding-top: 7px;
+  }
+  .review-most-active-title{
+    font-size: 22px;
+  }
+  .profile-header{
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 640px){
+  .landing-h1{
+    text-align: center;
+  }
+  .nav-navbar{
+    padding: 0 12%;
+  }
+  .nav-text{
+    padding: 7px 7px;
+  }
+  #email{
+    width: 250px;
+  }
+  #password{
+    width: 198px;
+  }
+  #username{
+    width: 250px;
+  }
+  .auth-button{
+    width: 274px;
+  }
+  .auth-heading{
+    text-align: center;
+  }
+  .review-most-active-title{
+    font-size: 16px;
+  }
+  .review-card{
+    width: 90px;
+    height: 160px;
+    margin: 25px 10px;
+    border-radius: 8px;
+  }
+  .review-image{
+    width: 90px;
+    height: 160px;
+    border-radius: 8px;
+  }
+  .review-content{
+    width: 90px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding: 10px 0;
+  }
+  .review-title{
+    font-weight: lighter;
+    font-size: 10px;
+  }
+  .review-creator{
+    font-size: 8px;
+  }
+  .review-most-recent-top{
+    flex-direction: column;
+  }
+  .review-browseall{
+    margin: 5px auto 5px auto;
+    width: 90px;
+  }
+  .create-form{
+    width: 300px;
+  }
+  .create-input{
+    width: 240px;
+  }
+  .create-preview{
+    width: 240px;
+  }
+  .preview-image{
+    width: 100px;
+  }
+  .preview-title{
+    font-size: 27px;
+  }
+  .preview-user{
+    font-size: 6px;
+  }
+  .preview-text{
+    font-size: 7px;
+  }
+  .preview-date{
+    font-size: 6px;
+  }
+  #catalogue-error{
+    font-size: 12px;
+  }
+  .reviewPage-image{
+    height: 120px;
+  }
+  .reviewPage-title{
+    font-size: 20px;
+  }
+  .reviewPage-user{
+    font-size: 12px;
+  }
+  .reviewPage-text{
+    margin-top: 30px;
+    width: 230px;
+  }
+  .reviewPage-date{
+    margin-top: 15px;
+    width: 230px;
+  }
+  .comment-form .button{
+    width: 200px;
+  }
+  .comment-input{
+    width: 111px;
+  }
+  .comment-box{
+    width: 200px;
+    margin-top: 12px;
+  }
+  .comment-date{
+    font-size: 10px;
+    width: 50px;
+    margin-left: 140px;
+  }
+  .comment-text{
+    margin-top: 5px;
+    font-size: 12px;
+  }
+  .comment-user{
+    font-size: 10px;
+  }
+  #comment-delete{
+    font-size: 10px;
+    width: 25px;
+  }
+}
