@@ -31,9 +31,9 @@ export const remove = id => ({
     id
   });
   
-export const removeComment = (comment_id, user_id, review_id) => {
+export const removeComment = (comment_id, ReviewUser_id, review_id, user_id) => {
     return dispatch => {
-        return apiCall("delete", `/users/${user_id}/reviews/${review_id}/comments/${comment_id}`)
+        return apiCall("delete", `/users/${ReviewUser_id}/reviews/${review_id}/user/${user_id}/comments/${comment_id}`)
         .then(() => dispatch(remove(comment_id)))
         .catch(err => {
             dispatch(addError(err.messages))

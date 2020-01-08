@@ -586,11 +586,61 @@ body{
 
 /* Profile */
 .profile-header{
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 460px;
+  font-size: 22px;
   color: #0a1969;
-  
-  padding: 12px 25px;
+  padding: 12.2px 25px;
   border-radius: 20px;
   background-image: linear-gradient(to right, #649AEB , #557FE8 , #4765E6 )
+}
+.activity-score-text{
+  font-size: 22px;
+  margin: 0px;
+}
+#activity-score{
+  width: 460px;
+  font-size: 22px;
+  color: #0a1969;
+  background-color: #58cc58;
+  display: flex;
+  border-radius: 20px;
+  margin: auto 0px 15px 0px;
+  margin-right: 10px;
+  margin-left: 10px;
+  justify-content: space-between;
+  padding: 10px 25px;
+}
+#information{
+  border-radius: 20px;
+  border: none;
+  width: 30px;
+  height: 30px;
+  margin: auto 0px;
+  color: #0a1969;
+  background-color: #547DE8;
+  font-family: 'Merriweather', serif;
+  transition: background-color 0.2s ease-in-out;
+}
+#information:focus{
+  outline: none;
+}
+#information:hover{
+  background-color: rgb(58, 95, 189);
+}
+.info-display{
+  z-index: 41;
+  position: absolute;
+  background-color: white;
+  font-size: 16px;
+  transform: translateY(30px);
+  padding: 10px 12px;
+  width: 400px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border: 2px solid #6194EB;
 }
 #profile-review-list{
   border-radius: 20px;
@@ -598,6 +648,23 @@ body{
   -webkit-box-shadow: 10px 10px 60px -4px rgba(71,100,230,0.48);
   -moz-box-shadow: 10px 10px 60px -4px rgba(71,100,230,0.48);
   box-shadow: 10px 10px 60px -4px rgba(71,100,230,0.48);
+}
+.profile-top{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.profile-trophy{
+  margin-right: 10px;
+}
+#bronze{
+  color: #bf4e08;
+}
+#silver{
+  color: #cccccc;
+}
+#gold{
+  color: #e6b410;
 }
 
 /* Comments */
@@ -753,8 +820,19 @@ body{
   .auth-heading{
     text-align: center;
   }
+  .profile-header{
+    font-size: 16px;
+  }
+  .activity-score-text{
+    font-size: 16px;
+  }
   .review-most-active-title{
     font-size: 16px;
+  }
+  #information{
+    font-size: 16px;
+    height: 22px;
+    width: 22px;
   }
   .review-card{
     width: 90px;
@@ -856,5 +934,10 @@ body{
   #comment-delete{
     font-size: 10px;
     width: 25px;
+  }
+  .info-display{
+    transform: translateY(25px);
+    font-size: 10px;
+    width: 135px;
   }
 }

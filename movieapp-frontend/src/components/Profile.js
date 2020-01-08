@@ -7,14 +7,21 @@ class Profile extends Component{
         super(props);
         this.state = {
             username: '',
+            activityScore: 0,
+            infoDisplay: false,
             reviews: []
         }
+        this.handleInfo = this.handleInfo.bind(this);
+    }
+    handleInfo(){
+        this.setState({infoDisplay: !this.state.infoDisplay});
     }
     componentDidMount(){
         apiCall('get', `http://localhost:8000${window.location.pathname}`)
             .then(res => {
                 this.setState({
-                    username: res.username
+                    username: res.username,
+                    activityScore: res.activityScore
                 })
             }).catch(err => console.log(err));
         let url = '/reviews';
@@ -44,7 +51,28 @@ class Profile extends Component{
         return(
             <div>
                 {this.state.username ?
-                <h1 className='profile-header'>{this.state.username}'s Reviews</h1>
+                <div className='profile-top'>
+                    <h1 className='profile-header'>{this.state.username}'s Reviews</h1>
+                    <div id='activity-score'>
+                    <h1 className='activity-score-text'>
+                        <i className="fas fa-trophy profile-trophy" id={
+                            this.state.activityScore < 15  ?
+                            'bronze' : [
+                                (this.state.activityScore >= 15 && this.state.activityScore < 25 ?
+                                    'silver' : 'gold')
+                            ]
+                        }></i>
+                        Activity Score: {this.state.activityScore}
+                    </h1>
+                    <button onClick={this.handleInfo} id='information'>i</button>
+                    {!this.state.infoDisplay ?
+                    null : 
+                    <div className='info-display'>
+                        Activity score is increased by creating reviews and commenting on existing ones.
+                        It is equally decreased if you remove a review or a comment.
+                        By default everyone gets a bronze trophy, after 15 points - a silver one, after 25 - a golden one.</div>}
+                    </div>
+                </div>
                 : <h1 className='profile-header'>Loading</h1>}
                 <div className='review-list' id='profile-review-list'>
                     {ReviewList}

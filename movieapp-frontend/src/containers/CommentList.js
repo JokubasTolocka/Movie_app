@@ -25,7 +25,7 @@ class CommentList extends Component{
                     comment={comment.comment}
                     date={comment.createdAt}
                     username={comment.user.username}
-                    removeComment={removeComment.bind(this, comment._id, this.state.reviewUserId, this.state.reviewId)}
+                    removeComment={removeComment.bind(this, comment._id, this.state.reviewUserId, this.state.reviewId, this.state.user_id)}
                     isCurrentUser={this.props.currentUser.user.id === comment.user._id}
                 />
             )
